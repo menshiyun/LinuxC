@@ -1,7 +1,22 @@
 obj = a.o b.o
+
+.PHONY : all
+all : test $(obj)
+
 test : $(obj)
 	cc -o test $(obj)
-a.o : a.c b.h
-	cc -c a.c
-b.o : b.c
-	cc -c b.c
+
+.PHONY : clean
+clean:
+	rm -rf test $(obj)
+
+test_dir = t_d
+.PHONY : install
+install :
+	mkdir $(test_dir)
+	cp test $(test_dir)
+
+.PHONY : uninstall
+uninstall :
+	rm -rf $(test_dir)
+

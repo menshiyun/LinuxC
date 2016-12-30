@@ -16,7 +16,7 @@ circ_list_node suffixes[] = {
     "66", &suffixes[7],
     "77", &suffixes[8],
     "88", &suffixes[9],
-    "99", &suffixes[0],
+    "99", suffixes,
 };
 
 #define MAX 20

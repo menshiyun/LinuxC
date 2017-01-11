@@ -11,6 +11,7 @@ int main(void)
     if(fork()==0)
     {
         printf("This is the child process .pid =%d\n",getpid());
+        sleep(4);
         exit(5);
     }
     else

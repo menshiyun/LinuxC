@@ -9,8 +9,10 @@ int main(int argc, char *argv[]) {
   // signalhandler();
   int sfd = tcp_init(argv[1], atoi(argv[2]));
 
+  int cfd = tcp_accept(sfd);
+
   while (1) {
-    int cfd = tcp_accept(sfd);
+    // int cfd = tcp_accept(sfd);
     char buf[512] = {0};
     if (recv(cfd, buf, sizeof(buf), 0) == -1) {
       perror("recv");
@@ -18,15 +20,18 @@ int main(int argc, char *argv[]) {
       close(sfd);
       exit(-1);
     }
-    puts(buf);
-    if (send(cfd, "hello world", 12, 0) == -1) {
+    if (!strcmp(buf, "exit"))
+      break;
+    printf("[Client]:%s\n", buf);
+    if (send(cfd, buf, strlen(buf), 0) == -1) {
       perror("send");
       close(cfd);
       close(sfd);
       exit(-1);
     }
-    close(cfd);
+    // close(cfd);
   }
+  close(cfd);
   close(sfd);
   return 0;
 }

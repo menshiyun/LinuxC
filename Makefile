@@ -20,3 +20,6 @@ install :
 uninstall :
 	rm -rf $(test_dir)
 
+tcp_net :
+	cc tcp_net_socket.c tcp_net_server.c -o tcp_net_server.out
+	cc tcp_net_socket.c tcp_net_client.c -o tcp_net_client.out

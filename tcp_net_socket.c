@@ -37,8 +37,8 @@ int tcp_accept(int sfd) {
     close(new_fd);
     exit(-1);
   }
-  // printf("%s %d success connect...\n", inet_ntoa(clientaddr.sin_addr),
-  //        ntohs(clientaddr.sin_port));
+  printf("%s %d success connect...\n", inet_ntoa(clientaddr.sin_addr),
+         ntohs(clientaddr.sin_port));
   return new_fd;
 }
 

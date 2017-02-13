@@ -20,7 +20,7 @@ void *thread(void *arg) {
     // pthread_cond_wait(&cond, &mutex);
     sem_wait(&sem[num]);
     number++;
-    printf("thread:%d number:%d tid:%u\n", num + 1, number,
+    printf("thread:%d number:%d tid:%x\n", num + 1, number,
            (unsigned int)pthread_self());
     sleep(1);
     sem_post(&sem[no]);
